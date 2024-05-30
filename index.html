@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
+
+    <style>
+        .box{
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: red;
+            margin: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Vue lo kan</h1>
+    
+    <div id="Authors">
+
+        <div v-if="showBooks">
+            <!-- attribute binding -->
+            <a v-bind:href="url">Portfolio</a> 
+            <!-- : is also same as v-bind -->
+            <!-- Method one -->
+            <p>{{ books[0].titles }} - {{books[0].author}}</p> 
+            <!-- Method Two -->
+            <ul>
+                    <li v-for="novel in books"> 
+                        <!-- the word 'books' is the array we are cycling through -->
+                        <img :src="novel.img" :alt="novel.titles">
+                        <h3>{{ novel.titles }}</h3>
+                        <p>{{ novel.author }}</p>
+                    </li>
+            </ul>
+            
+        </div>
+        
+        <button @click="toggleshowBooks">
+            <span v-if = "showBooks">Hide Books</span>
+            <span v-else >Show Books</span>
+        </button>
+    </div>
+
+    <br>
+
+    <div id="fem">
+        <!-- <h2>I am the template currently</h2> -->
+        <div v-if="showdetails">
+            <p>{{ title }} - {{author}} - {{age}} </p>
+        </div> 
+        <button v-on:click="age++">increase age</button>
+        <button v-on:click="age--">Decrease age</button>
+        <button @click="changeTitle">Chaange</button>
+
+        Conditional statement
+        <button @click="toggleshowdetails">
+            <span v-if="showdetails">Hide Details</span>
+            <span v-if="!showdetails">Show Details</span>
+        </button>
+
+        <br>
+        <!-- Mouse Events -->
+        <div class="box" @mouseover = "handleEvent">mouse over</div>
+        <div class="box" @mouseleave = "handleEvent">mouse leave</div>
+        <div class="box" @dblclick = "handleEvent">double click</div>
+        <div class="box" @mousemove = "handleMousemove">Postion {{x}} - {{y}}</div>
+        
+    </div>
+<br>
+    
+
+
+
+
+    <script src="app.js" > </script>
+    <script src="app2.js"></script>
+    
+</body>
+</html>
